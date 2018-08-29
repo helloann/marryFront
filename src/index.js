@@ -7,7 +7,7 @@ function component() {
   var element = document.createElement('div');
 
   // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello123', 'webpack' + cube(5)], ' ');
+  element.innerHTML = _.join(['Hello123', 'webpack1' + cube(5)], ' ');
 
   return element;
 }
