@@ -1,22 +1,29 @@
-// http://eslint.org/docs/user-guide/configuring
+// https://eslint.org/docs/user-guide/configuring
 
 module.exports = {
   root: true,
-  parser: 'babel-eslint',//解析器，这里我们使用babel-eslint
   parserOptions: {
-    sourceType: 'module'//类型为module，因为代码使用了使用了ECMAScript模块
+    parser: 'babel-eslint'
   },
   env: {
-    browser: true,//预定义的全局变量，这里是浏览器环境
+    browser: true,
   },
-  // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  //extends: 'standard', //扩展，可以通过字符串或者一个数组来扩展规则
+  extends: [
+    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
+    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
+    'plugin:vue/essential', 
+    // https://github.com/standard/standard/blob/master/docs/RULES-en.md
+    'standard'
+  ],
   // required to lint *.vue files
   plugins: [
-   'html' //插件，此插件用于识别文件中的js代码，没有MIME类型标识没有script标签也可以识别到，因此拿来识别.vue文件中的js代码
+    'vue'
   ],
   // add your custom rules here
-  'rules': {
-    //这里写自定义规则
+  rules: {
+    // allow async-await
+    'generator-star-spacing': 'off',
+    // allow debugger during development
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   }
 }
